@@ -1,0 +1,12 @@
+<h1>Hello</h1>
+<% @post.each do |post| %>
+<div class="alert alert-light">
+<hr>
+ <h3>Name: <%= post.name  %></h3>
+ <p>Summary: <%= post.summary %></p>
+  <p>Start_date: <%= post.start_date %></p>
+   <p>End_date: <%= post.exnd_date %></p>
+   <%= link_to "Details", post_path(post), :class => 'btn btn-outline-primary' %>
+   <hr>
+ </div>
+   <% end %>

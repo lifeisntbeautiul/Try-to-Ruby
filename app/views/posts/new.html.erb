@@ -1,0 +1,28 @@
+<h1>Hello number 2 </h1>
+<%= form_for :post, url: posts_path do |f| %>
+<% if @post.errors.any? %>
+  <% @post.errors.full_messages.each do |err| %>
+  <div class="alert alert-danger"><%= err %></div>
+  <% end %>
+  <% end %>
+<p>
+  <br>
+  Name:<br><br>
+  <%= f.text_field(:name, {:class => 'form-control'}) %>
+</p>
+<p>
+   Summary: <br><br>
+   <%= f.text_area(:summary, {:class => 'form-control'}) %>
+ </p>
+ <p>
+   Start_date: <br><br>
+   <%= f.date_field(:start_date, {:class => 'form-control'}) %>
+   </p>
+   <p>
+     End_date: <br><br>
+     <%= f.date_field(:exnd_date, {:class => 'form-control'})%>
+     </p>
+ <p>
+   <%= f.submit ({:value => 'Save Project', :class => 'btn btn-success'})%>
+ </p>
+ <%end%>

@@ -1,0 +1,39 @@
+<br><br><br><br>
+<h1>Name: <%= @post.name %></h1>
+<h1>Summary: <em><%= @post.summary %></em></h1>
+<h1>Start_date: <%= @post.start_date %></h1>
+<h1>End_date: <%= @post.exnd_date %></h1>
+<%= link_to "Edit", edit_post_path(@post), :class => 'btn btn-warning' %>
+<%= link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure?"}, :class => 'btn btn-danger' %>
+<br><hr>
+<h1>Tasks: </h1>
+<% @post.comments.each do |comment| %>
+<div class="alert alert-light">
+<hr>
+ <h3>Title: <%= comment.title %></h3>
+ <p>Decription: <%= comment.description %></p>
+  <p>Status: <%= comment.status %></p>
+   <hr>
+ </div>
+   <% end %>
+
+<hr>
+<h1>Add task to project</h1>
+<%= form_for([@post, @post.comments.build]) do |f| %>
+<p>
+  <br>
+  Task:<br>
+  <%= f.text_field(:title, {:class => 'form-control'}) %>
+</p>
+<p>
+   Decription: <br>
+   <%= f.text_area(:description, {:class => 'form-control'}) %>
+ </p>
+ <p>
+   Status: <br>
+   <%= f.date_field(:status, {:class => 'form-control'}) %>
+   </p>
+ <p>
+   <%= f.submit ({:value => 'Add task to project', :class => 'btn btn-success'})%>
+ </p>
+ <%end%>
