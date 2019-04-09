@@ -30,8 +30,10 @@
    <%= f.text_area(:description, {:class => 'form-control'}) %>
  </p>
  <p>
-   Status: <br>
-   <%= f.date_field(:status, {:class => 'form-control'}) %>
+   <b>Status: </b><br>
+   <em>New: </em><%= f.text_field(:status, {:type => 'radio', :value => 'new'}) %><br>
+   <em>In proggress: </em><%= f.text_field(:status, {:type => 'radio', :value => 'in progress'}) %><br>
+   <em>Done: </em><%= f.text_field(:status, {:type => 'radio', :value => 'done'}) %>
    </p>
  <p>
    <%= f.submit ({:value => 'Add task to project', :class => 'btn btn-success'})%>
