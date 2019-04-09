@@ -9,12 +9,14 @@
   </head>
 
   <body>
+    <br><br>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
   <span class="navbar-brand">Try Ruby</span>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
+ <p class="notice"><%= notice %></p>
+ <p class="alert"><%= alert %></p>
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
@@ -23,11 +25,24 @@
       <li class="nav-item">
         <span class="nav-link"><%= link_to "Create a project", new_post_path %></span>
       </li>
+      <% if user_signed_in? %>
+      <li class="nav-item">
+        <span class="nav-link"><%= link_to "Exit", destroy_user_session_path, method: :delete %></span>
+      </li>
+      <% else %>
+      <li class="nav-item">
+        <span class="nav-link"><%= link_to "Sign In", new_user_session_path %></span>
+      </li>
+      <li class="nav-item">
+        <span class="nav-link"><%= link_to "Sign Up", new_user_registration_path %></span>
+      </li>
+      <% end %>
     </ul>
   </div>
 </nav>
 <div class="container">
     <%= yield %>
     </div>
+
   </body>
 </html>
